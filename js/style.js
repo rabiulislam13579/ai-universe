@@ -52,9 +52,9 @@ const loadElementDetail=async id=>{
 const displayElementDetail=element=>{
     console.log(element.accuracy.score);
     const featuresName=Object.entries(element.features);
-    const accuracy=element.accuracy.score;
-    const accuracyScore=accuracy*100;
-    console.log(accuracyScore);
+    // const accuracy=element.accuracy.score;
+    // const accuracyScore=accuracy*100;
+    // console.log(accuracyScore);
     
    const elementDetailContainer=document.getElementById('element-details-container');
    elementDetailContainer.innerText='';
@@ -106,11 +106,20 @@ const displayElementDetail=element=>{
           <h4>${element.input_output_examples? element.input_output_examples[1].input: 'no data found'}</h4>
           <p>${element.input_output_examples? element.input_output_examples[1].output: 'no data found'}</p>
         </div>
-        <button id="accuracy-btn" class="btn btn-danger rounded-3 text-white fs-6 position-absolute top-0 end-0 p-1 mt-3 me-3">${accuracyScore}% accuracy</button>
+      
       </div>
      
    </div>
    `
+   document.getElementById('accuracy-btn').innerText=`${element.accuracy.score*100}% accuracy`;
+   const accuracyDiv=document.getElementById('accuracy-div');
+   if(element.accuracy.score*100!==0){
+    accuracyDiv.classList.remove('d-none');
+   }
+   else{
+    accuracyDiv.classList.add('d-none');
+   }
+
  elementDetailContainer.appendChild(elementDiv)
 }
 
