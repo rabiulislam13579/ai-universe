@@ -50,8 +50,11 @@ const loadElementDetail=async id=>{
 }
 
 const displayElementDetail=element=>{
-    console.log(element.integrations);
-    const featuresName=Object.entries(element.features)
+    console.log(element.accuracy.score);
+    const featuresName=Object.entries(element.features);
+    const accuracy=element.accuracy.score;
+    const accuracyScore=accuracy*100;
+    console.log(accuracyScore);
     
    const elementDetailContainer=document.getElementById('element-details-container');
    elementDetailContainer.innerText='';
@@ -61,17 +64,17 @@ const displayElementDetail=element=>{
       <div class="bg-warning-subtle p-2 border border-danger rounded-3">
          <h5>${element.description}</h5>
         <div class="d-flex">
-           <div>
-              <p></p>
-              <p></p>
+           <div class="text-success fw-semibold bg-light border rounded-3 p-1">
+              <p>${element.pricing?element.pricing[0].price :'free of cost'}</p>
+              <p>${element.pricing? element.pricing[0].plan : 'free of cost'}</p>
            </div>
-           <div>
-              <p></p>
-              <p></p>
+           <div class="text-warning fw-semibold bg-light border rounded-3 p-1">
+               <p>${element.pricing?element.pricing[1].price :'free of cost'}</p>
+               <p>${element.pricing? element.pricing[1].plan : 'free of cost'}</p>
            </div>
-           <div>
-               <p></p>
-               <p></p>
+           <div class="text-danger fw-semibold bg-light border rounded-3 p-1">
+           <p>${element.pricing?element.pricing[2].price :'free of cost'}</p>
+           <p>${element.pricing? element.pricing[2].plan : 'free of cost'}</p>
            </div>
         </div>
         <div class="d-flex">
@@ -86,21 +89,29 @@ const displayElementDetail=element=>{
             <div>
                 <h4>Integrations</h4>
                 <ul>
-                 <li>${element.integrations[0]? element.integrations[0]:'no data found'}</li>
-                 <li>${element.integrations[1]? element.integrations[1]:'no data found'}</li>
-                 <li>${element.integrations[2]? element.integrations[2]:'no data found'}</li>
-                 <li>${element.integrations[3]? element.integrations[3]:'no data found'}</li>
-                 <li>${element.integrations[4]? element.integrations[4]:'no data found'}</li>
+                 <li>${element.integrations? element.integrations[0]:'no data found'}</li>
+                 <li>${element.integrations? element.integrations[1]:'no data found'}</li>
+                 <li>${element.integrations? element.integrations[2]:'no data found'}</li>
+                 <li>${element.integrations? element.integrations[3]:'no data found'}</li>
+                 <li>${element.integrations? element.integrations[4]:'no data found'}</li>
                </ul>
             </div>
         </div>
       </div>
       <div class="ms-1">
-        <img class="img-fluid" src="${element.image_link[0]}">
+        <img class="img-fluid" src="${element.image_link[0]}"> 
+        <div class="text-center">
+          <h4>${element.input_output_examples? element.input_output_examples[0].input: 'no data found'}</h4>
+          <p>${element.input_output_examples? element.input_output_examples[0].output: 'no data found'}</p>
+          <h4>${element.input_output_examples? element.input_output_examples[1].input: 'no data found'}</h4>
+          <p>${element.input_output_examples? element.input_output_examples[1].output: 'no data found'}</p>
+        </div>
+        <button id="accuracy-btn" class="btn btn-danger rounded-3 text-white fs-6 position-absolute top-0 end-0 p-1 mt-3 me-3">${accuracyScore}% accuracy</button>
       </div>
+     
    </div>
    `
-   elementDetailContainer.appendChild(elementDiv)
+ elementDetailContainer.appendChild(elementDiv)
 }
 
 
