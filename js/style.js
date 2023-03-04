@@ -6,6 +6,11 @@ const loadData=()=>{
 }
 const displayData=elements=>{
    const divContainer=document.getElementById('div-container');
+   
+
+
+
+
     for(const element of elements){
        // console.log(element)
         const div=document.createElement('div');
@@ -101,10 +106,10 @@ const displayElementDetail=element=>{
       <div class="ms-1">
         <img class="img-fluid" src="${element.image_link[0]}"> 
         <div class="text-center">
-          <h4>${element.input_output_examples? element.input_output_examples[0].input: 'no data found'}</h4>
-          <p>${element.input_output_examples? element.input_output_examples[0].output: 'no data found'}</p>
-          <h4>${element.input_output_examples? element.input_output_examples[1].input: 'no data found'}</h4>
-          <p>${element.input_output_examples? element.input_output_examples[1].output: 'no data found'}</p>
+          <h4>${element.input_output_examples? element.input_output_examples[0].input: 'No! Not Yet! take a break!!'}</h4>
+          <p>${element.input_output_examples? element.input_output_examples[0].output: 'No! Not Yet! take a break!!'}</p>
+          <h4>${element.input_output_examples? element.input_output_examples[1].input: 'No! Not Yet! take a break!!'}</h4>
+          <p>${element.input_output_examples? element.input_output_examples[1].output: 'No! Not Yet! take a break!!'}</p>
         </div>
       
       </div>
