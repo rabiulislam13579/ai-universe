@@ -7,6 +7,15 @@ const loadData=()=>{
 const displayData=elements=>{
    const divContainer=document.getElementById('div-container');
    
+   const showAll=document.getElementById('show-all');
+   //display for fixed number of element
+   if(elements.length>6){
+    elements=elements.slice(0,6);
+    showAll.classList.remove('d-none')
+   }
+   else{
+    showAll.classList.add('d-none')
+   }
 
 
 
