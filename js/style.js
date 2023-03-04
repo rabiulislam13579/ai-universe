@@ -22,7 +22,24 @@ const displayData=(elements,dataLimit)=>{
 
 
     for(const element of elements){
-       // console.log(element)
+      console.log(element)
+     //for sort 
+     document.getElementById('sort-btn').addEventListener('click',function(){
+      let dateArr=element.published_in.split('/');
+     let year = parseFloat(dateArr[2]);
+     let month = parseFloat(dateArr[1]) - 1;
+     let day = parseFloat(dateArr[0])
+     let elementDate = new Date(year, month, day);
+     element.published_in = elementDate;
+     console.log(elements)
+
+     
+     
+     })
+
+
+
+       
         const div=document.createElement('div');
         div.classList.add('col');
         div.innerHTML=`
@@ -99,10 +116,10 @@ const displayElementDetail=element=>{
    elementDetailContainer.innerText='';
    const elementDiv=document.createElement('div');
    elementDiv.innerHTML=`
-   <div class="d-flex ">
+   <div class="d-md-flex ">
       <div class="bg-warning-subtle p-2 border border-danger rounded-3">
          <h5>${element.description}</h5>
-        <div class="d-flex">
+        <div class="d-flex ">
            <div class="text-success fw-semibold bg-light border rounded-3 p-1">
               <p>${element.pricing?element.pricing[0].price :'free of cost'}</p>
               <p>${element.pricing? element.pricing[0].plan : 'free of cost'}</p>
@@ -161,5 +178,6 @@ const displayElementDetail=element=>{
 
  elementDetailContainer.appendChild(elementDiv)
 }
+
 
 
