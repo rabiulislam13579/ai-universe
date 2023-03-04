@@ -53,9 +53,11 @@ const displayData=(elements,dataLimit)=>{
         `
         divContainer.appendChild(div);
     }
+    loader(false);
 
 }
 const processFindingData=(dataLimit)=>{
+  loader(true);
   loadData(dataLimit)
 
 }
