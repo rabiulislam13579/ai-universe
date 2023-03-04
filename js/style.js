@@ -59,6 +59,17 @@ const processFindingData=(dataLimit)=>{
   loadData(dataLimit)
 
 }
+const loader=isLoading=>{
+  const loaderSection=document.getElementById('loader')
+  if(isLoading){
+    loaderSection.classList.remove('d-none')
+  }
+  else{
+    loaderSection.classList.add('d-none')
+  }
+}
+
+
 processFindingData(6);
 document.getElementById('btn-showall').addEventListener('click',function(){
   processFindingData();
