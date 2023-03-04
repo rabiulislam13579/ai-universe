@@ -1,16 +1,17 @@
-const loadData=()=>{
+const loadData=(dataLimit)=>{
     const url=`https://openapi.programming-hero.com/api/ai/tools`;
     fetch(url)
     .then(res=>res.json())
-    .then(data=> displayData(data.data.tools));
+    .then(data=> displayData(data.data.tools,dataLimit));
 }
-const displayData=elements=>{
+const displayData=(elements,dataLimit)=>{
    const divContainer=document.getElementById('div-container');
+   divContainer.innerText='';
    
    const showAll=document.getElementById('show-all');
    //display for fixed number of element
-   if(elements.length>6){
-    elements=elements.slice(0,6);
+   if(elements.length>dataLimit){
+    elements=elements.slice(0,dataLimit);
     showAll.classList.remove('d-none')
    }
    else{
@@ -54,7 +55,18 @@ const displayData=elements=>{
     }
 
 }
+const processFindingData=(dataLimit)=>{
+  loadData(dataLimit)
 
+}
+processFindingData(6);
+document.getElementById('btn-showall').addEventListener('click',function(){
+  processFindingData();
+})
+
+
+
+//modal data
 const loadElementDetail=async id=>{
     const url=`https://openapi.programming-hero.com/api/ai/tool/${id}`
     const res=await fetch(url);
@@ -138,4 +150,3 @@ const displayElementDetail=element=>{
 }
 
 
-loadData()
