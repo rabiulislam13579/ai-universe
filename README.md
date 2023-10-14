@@ -1,2 +1,2 @@
 # ai-universe
-live site link:
+live site link:https://rabiulislam13579.github.io/ai-universe/
